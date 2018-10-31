@@ -10,118 +10,43 @@
 
 
 
-<script src="js/main.js"></script>
+
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
-    axios.get('/user', {
-        params: {
-            ID: getResult2
-        }
-    })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-        .then(function () {
-            // always executed
-        });
+  //  const axios = require('axios');
+    function loadNewvideos() {
+        axios.get('/bridge/showRecent')
+            .then(function (response) {
+                // handle success
 
 
-    //                                const axios = require('axios');
-    //
-    //                                // Make a request for a user with a given ID
-    //                                axios.get('http://ceflixv3.loc/bridge/showRecent')
-    //                                    .then(function (response) {
-    //                                        // handle success
-    //                                        console.log(response);
-    //                                    })
-    //                                    .catch(function (error) {
-    //                                        // handle error
-    //                                        console.log(error);
-    //                                    })
-    //                                    .then(function () {
-    //                                        // always executed
-    //                                    });
+                var output = "";
+                for(var i=0; i < response.data.data.length; i++ ) {
+                    output += '<div class="col-xl-3 col-sm-6 mb-3"><div class="video-card"><div class="video-card-image"style="max-height:200px;over-flow:hidden"><a class="play-icon" href="{{('video')}}"><i class="fas fa-play-circle"></i></a><a href="{{('single_channel')}}"><img  class="img-fluid" src="'+response.data.data[i].thumbnail+'" alt=""></a>  </div> <div class="video-card-body"> <div class="video-title"> <a href="{{('single_channel')}}">'+response.data.data[i].videos_title.substring(0,44)+'</a> </div> <div class="video-page text-success">'+response.data.data[i].channelName+'  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a> </div> <div class="video-view">'+response.data.data[1].numOfViews+' view(s) &nbsp;<i class="fas fa-calendar-alt"></i> '+response.data.data[1].timeAgo+' </div> </div> </div> </div>';
+                }
+
+                $("#pinned_videos").append(output);
+
+                $("#spinner_pinned_videos").hide();
 
 
-    //                                function performGetRequest2() {
-    //                                    var resultElement = document.getElementById('getResult2');
-    //                                    var todoId = document.getElementById('todoId').value;
-    //                                    resultElement.innerHTML = '';
-    //
-    //                                    axios.get('http://ceflixv3.loc/bridge/showRecent', {
-    //                                        params: {
-    //                                            id: todoId
-    //                                        }
-    //                                    })
-    //                                        .then(function (response) {
-    //                                            console.log(response);
-    //                                            resultElement.innerHTML = generateSuccessHTMLOutput(response);
-    //                                        })
-    //                                        .catch(function (error) {
-    //                                            resultElement.innerHTML = generateErrorHTMLOutput(error);
-    //                                        });
-    //                                }
-
-
-
-    function Song(title, artist, duration){
-        this.title = title;
-        this.artist = artist;
-        this.duration = duration;
-
+                console.log(response.data.data);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
     }
 
-    Song.prototype.play = function(){
-        this.isPlaying = true;
-    }
-    Song.prototype.stop = function(){
-        this.isPlaying = false;
-    }
-    Song.prototype.toHTML = function(){
+</script>
 
-    }
-
-
-
-    function Playlist(){
-        this.songs = [];
-        this.nowPlayingIndex = 0;
-    }
-    Playlist.prototype.add = function(){
-        this.songs.push(song);
-    }
-    Playlist.prototype.play = function(){
-        var currentSong  = this.songs[this.nowPlayingIndex];
-        currentSong.stop();
-    }
-    Playlist.prototype.stop = function(){
-        var currentSong  = this.songs[this.nowPlayingIndex];
-        currentSong.stop();
-    }
-    Playlist.prototype.next = function(){
-        this.stop();
-        this.nowPlayingIndex++;
-        if(this.nowPlayingIndex === this.songs.length)
-            this.nowPlayingIndex = 0;
-    }
-    Playlist.prototype.renderIn = function(){
-
-    }
-
-
-    var playlist = new Playlist();
-
-    var hereComesTheSun = new Song("Here come the sun", "the Battles", "2.35");
-    var walkingInTheSun = new Song("walking in the sun", "matchless love", "3.35");
-
-    Playlist.add(hereComesTheSun);
-    Playlist.add(walkingInTheSun);
-
+<script>
+    loadNewvideos();
 </script>
 
 </body>

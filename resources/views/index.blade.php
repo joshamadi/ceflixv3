@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="single-channel-image">
-                                <img class="img-fluid" alt="" src="img/channel-banner2.png">
+                                <img class="img-fluid" alt="" src="img/channel-banner1.png">
                             </div>
 
 <hr>
@@ -84,8 +84,8 @@
 
 
                             <div class="video-block section-padding">
-                                <div class="row">
-                                    <div class="col-md-12">
+                                <div class="row" id="pinned_videos">
+                                    <div class="col-md-12" >
                                         <div class="main-title">
                                             <div class="btn-group float-right right-action">
                                                 <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,26 +100,14 @@
                                             <h6>Pinned videos</h6>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="video-card">
-                                            <div class="video-card-image">
-                                                <a class="play-icon" href="{{('video')}}"><i class="fas fa-play-circle"></i></a>
-                                                <a href="{{('single_channel')}}"><img class="img-fluid" src="img/v1.png" alt=""></a>
-                                                <div class="time">3:50</div>
-                                            </div>
-                                            <div class="video-card-body">
-                                                <div class="video-title">
-                                                    <a href="{{('single_channel')}}">There are many variations of passages of Lorem</a>
-                                                </div>
-                                                <div class="video-page text-success">
-                                                    Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
-                                                </div>
-                                                <div class="video-view">
-                                                    1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                                                </div>
-                                            </div>
+                                    <div id="spinner_pinned_videos" class="col-md-12" align="center">
+                                        <div>
+                                            <i class="fa fa-spinner fa-spin fa-3x"></i> <br/>
+                                            ...loading....
                                         </div>
+
                                     </div>
+
                                 </div>
                             </div>
 
@@ -254,29 +242,7 @@
 
 
 
-                        <script>
-                            document.getElementById('todoInputForm').addEventListener('submit', performPostRequest);
-                            function performPostRequest(e) {
-                                var resultElement = document.getElementById('postResult');
-                                var todoTitle = document.getElementById('todoTitle').value;
-                                resultElement.innerHTML = '';
 
-                                axios.post('http://ceflixv3.loc/bridge/showRecent', {
-                                    userId: '1',
-                                    title: todoTitle,
-                                    completed: false
-                                })
-                                    .then(function (response) {
-                                        resultElement.innerHTML = generateSuccessHTMLOutput(response);
-                                    })
-                                    .catch(function (error) {
-                                        resultElement.innerHTML = generateErrorHTMLOutput(error);
-                                    });
-
-                                e.preventDefault();
-                            }
-
-                        </script>
         </div>
         </div>
 @include('layouts.footer')
