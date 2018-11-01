@@ -77,3 +77,7 @@ Route::get('/video', function () {
 });
 
 Route::get('bridge/showRecent','bridge\VideoController@showNewVideos')->name('showNewVideos');
+
+Route::get('bridge/showFeatured','bridge\VideoController@showFeaturedVideos')->name('showFeaturedVideos');
+
+Route::get('bridge/showRecomm','bridge\VideoController@showRecommVideos')->name('showRecommVideos');

@@ -27,7 +27,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{('treading')}}">
             <i class="fas fa-fw fa-users"></i>
-            <span>Treading</span>
+            <span>Trending</span>
         </a>
     </li>
     <li class="nav-item">

@@ -28,11 +28,10 @@
                 }
 
                 $("#pinned_videos").append(output);
-
                 $("#spinner_pinned_videos").hide();
 
 
-                console.log(response.data.data);
+               // console.log(response);
             })
             .catch(function (error) {
                 // handle error
@@ -43,11 +42,75 @@
             });
     }
 
+
+  function loadFeatureVideos(){
+
+      axios.get('/bridge/showFeatured')
+          .then(function (response) {
+              // handle success
+
+
+              var output = "";
+              for(var i=0; i < response.data.data.length; i++ ) {
+                  output += '<div class="col-xl-2 col-sm-6 mb-3"><div class="video-card"><div class="video-card-image"style="max-height:130px;over-flow:hidden"><a class="play-icon" href="{{('video')}}"><i class="fas fa-play-circle"></i></a><a href="{{('single_channel')}}"><img  class="img-fluid" src="'+response.data.data[i].thumbnail+'" alt=""></a>  </div> <div class="video-card-body"> <div class="video-title"> <a href="{{('single_channel')}}">'+response.data.data[i].videos_title.substring(0,30).toLowerCase()+'</a> </div> <div class="video-page text-success">Channnel name <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a> </div> <div class="video-view">'+response.data.data[1].numOfViews+' view(s) &nbsp;<i class="fas fa-calendar-alt"></i> '+response.data.data[1].timeAgo+' </div> </div> </div> </div>';
+              }
+
+              $("#featured_videos").append(output);
+
+              $("#spinner_subVideo").hide();
+
+
+              console.log(response);
+          })
+          .catch(function (error) {
+              // handle error
+              console.log(error);
+          })
+          .then(function () {
+              // always executed
+          });
+
+  }
+
+
+  function showRecommVideos(){
+
+      axios.get('/bridge/showRecomm')
+          .then(function (response) {
+              // handle success
+
+
+              var output = "";
+              for(var i=0; i < response.data.data.length; i++ ) {
+                  output += '<div class="col-xl-2 col-sm-6 mb-3"><div class="video-card"><div class="video-card-image"style="max-height:130px;over-flow:hidden"><a class="play-icon" href="{{('video')}}"><i class="fas fa-play-circle"></i></a><a href="{{('single_channel')}}"><img  class="img-fluid" src="'+response.data.data[i].thumbnail+'" alt=""></a>  </div> <div class="video-card-body"> <div class="video-title"> <a href="{{('single_channel')}}">'+response.data.data[i].videos_title.substring(0,30).toLowerCase()+'</a> </div> <div class="video-page text-success">'+response.data.data[i].description.substring(0,30)+'  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a> </div> <div class="video-view">'+response.data.data[1].numOfViews+' view(s) &nbsp;<i class="fas fa-calendar-alt"></i> timeAgo </div> </div> </div> </div>';
+              }
+
+              $("#trending_video").append(output);
+
+              $("#pinned_trending_video").hide();
+
+
+              console.log(response);
+          })
+          .catch(function (error) {
+              // handle error
+              console.log(error);
+          })
+          .then(function () {
+              // always executed
+          });
+
+  }
 </script>
 
 <script>
     loadNewvideos();
+    loadFeatureVideos();
+    showRecommVideos();
+
 </script>
+
+
 
 </body>
 </html>
