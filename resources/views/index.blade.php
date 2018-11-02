@@ -146,7 +146,7 @@
 
                             {{--recomm video api--}}
                             <div class="video-block section-padding">
-                                <div class="row" id="trending_video">
+                                <div class="row" id="trending-video">
                                     <div class="col-md-12">
                                         <div class="main-title">
                                             <div class="btn-group float-right right-action">
@@ -163,7 +163,7 @@
                                         </div>
                                     </div>
 
-                                        <div id="pinned_trending_video" class="col-md-12" align="center">
+                                        <div id="spinner-trending-video" class="col-md-12" align="center">
                                             <div>
                                                 <i class="fa fa-spinner fa-spin fa-3x"></i> <br/>
                                                 ...loading....

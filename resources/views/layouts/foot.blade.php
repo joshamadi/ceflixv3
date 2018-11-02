@@ -85,9 +85,9 @@
                   output += '<div class="col-xl-2 col-sm-6 mb-3"><div class="video-card"><div class="video-card-image"style="max-height:130px;over-flow:hidden"><a class="play-icon" href="{{('video')}}"><i class="fas fa-play-circle"></i></a><a href="{{('single_channel')}}"><img  class="img-fluid" src="'+response.data.data[i].thumbnail+'" alt=""></a>  </div> <div class="video-card-body"> <div class="video-title"> <a href="{{('single_channel')}}">'+response.data.data[i].videos_title.substring(0,30).toLowerCase()+'</a> </div> <div class="video-page text-success">'+response.data.data[i].description.substring(0,30)+'  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a> </div> <div class="video-view">'+response.data.data[1].numOfViews+' view(s) &nbsp;<i class="fas fa-calendar-alt"></i> timeAgo </div> </div> </div> </div>';
               }
 
-              $("#trending_video").append(output);
+              $("#trending-video").append(output);
 
-              $("#pinned_trending_video").hide();
+              $("#spinner-trending-video").hide();
 
 
               console.log(response);
